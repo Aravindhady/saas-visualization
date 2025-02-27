@@ -1,0 +1,23 @@
+my-vite-app/
+│── node_modules/         # Installed dependencies
+│── public/               # Static assets (favicon, images, etc.)
+│   ├── vite.svg          # Example Vite logo
+│── src/                  # Main source code
+│   ├── assets/           # Static assets like images, icons, fonts
+│   ├── components/       # Reusable React components
+│   ├── pages/            # Page-level components (for routing)
+│   ├── hooks/            # Custom React hooks
+│   ├── contexts/         # Context API providers
+│   ├── services/         # API calls and external services
+│   ├── store/            # State management (Redux, Zustand, etc.)
+│   ├── styles/           # Global styles (CSS, SCSS, Tailwind, etc.)
+│   ├── utils/            # Helper functions/utilities
+│   ├── App.jsx           # Root component
+│   ├── main.jsx          # Entry point (renders App)
+│── .gitignore            # Ignore files for Git
+│── index.html            # Main HTML file
+│── package.json          # Project metadata & dependencies
+│── vite.config.js        # Vite configuration file
+│── tailwind.config.js    # Tailwind CSS config (if used)
+│── postcss.config.js     # PostCSS config (if used)
+│── README.md             # Project documentation
