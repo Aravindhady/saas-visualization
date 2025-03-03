@@ -1,8 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import loginimg from '../../../assets/login.jpg'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+
+
 const LoginComponent = () => {
     const navigate = useNavigate()
+
+    const [email, setEmail] = useState()
+    const [password, setPassword] = useState()
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        axios.post('http://localhost:3001/login', { email, password })
+            .then(response => {
+                console.log(response)
+                if (response.data === "success") {
+                    navigate('/home')
+                }else {
+                    alert('Invalid user email or password')
+                }
+            })
+            .catch(error => console.error(error));
+
+    }
+
+
     return (
         <>
             <div className='w-full min-h-screen flex flex-col md:flex-row justify-center items-center'>
@@ -42,17 +66,25 @@ const LoginComponent = () => {
 
                     {/* Login form - full width with responsive padding */}
                     <div className='flex flex-col gap-3 w-full max-w-md px-4 md:px-0'>
-                        <input
+                        {/* <input
                             type='text'
                             placeholder='Username'
                             className='w-full p-2 rounded-md border-2 focus:outline-none focus:border-blue-400'
+                            onChange={(e) => setName(e.target.value)}
+                        /> */}
+                        <input
+                            type='text'
+                            placeholder='Email'
+                            className='w-full p-2 rounded-md border-2 focus:outline-none focus:border-blue-400'
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                         <input
                             type='password'
-                            placeholder='Password'
+                            placeholder='Re-enter Password'
                             className='w-full p-2 rounded-md border-2 focus:outline-none focus:border-blue-400'
+                            onChange={(e) => setPassword(e.target.value)}
                         />
-                        <button className='w-full p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition'>
+                        <button className='w-full p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition' onClick={handleSubmit}>
                             Login
                         </button>
                     </div>
