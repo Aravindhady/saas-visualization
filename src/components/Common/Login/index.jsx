@@ -15,7 +15,6 @@ const LoginComponent = () => {
         e.preventDefault()
         axios.post('http://localhost:3001/login', { email, password })
             .then(response => {
-                console.log(response)
                 if (response.data === "success") {
                     navigate('/home')
                 }else {
